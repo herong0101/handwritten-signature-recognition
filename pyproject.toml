@@ -11,5 +11,6 @@ dependencies = [
 	"levenshtein>=0.27.1",
 	"openai",
 	"pandas>=2.3.3",
+	"pyautogui>=0.9.54",
 	"python-dotenv",
 ]
