@@ -23,9 +23,17 @@ try:
         # 移動滑鼠，duration 是移動花費的時間，讓動作稍微自然一點
         pyautogui.moveTo(target_x, target_y, duration=0.5)
         
+        # 隨機捲動頁面 (模擬人類滾動滾輪，正數向上，負數向下)
+        scroll_amount = random.randint(-5, 5) * 10
+        if scroll_amount != 0:
+            pyautogui.scroll(scroll_amount)
+            
+        # 輕微點擊一下鍵盤 (Shift) 也是防止休眠的好方法，不會影響大部分操作
+        pyautogui.press('shift')
+        
         # 印出時間讓您知道程式還活著
         current_time = time.strftime("%H:%M:%S", time.localtime())
-        print(f"[{current_time}] 滑鼠已移動至 ({target_x}, {target_y})")
+        print(f"[{current_time}] 滑鼠移動至 ({target_x}, {target_y})，捲動了 {scroll_amount} 單位，並觸發 Shift 鍵")
         
         # 隨機等待 1 到 3 分鐘 (60~180 秒) 不等，讓動作不像機器人
         sleep_time = random.randint(60, 180)
